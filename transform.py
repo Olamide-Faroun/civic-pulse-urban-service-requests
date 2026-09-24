@@ -74,6 +74,13 @@ def transform():
         )
     ])
 
+    # Change datetime precision for Azure Data Factory compatibility
+    df_refined = df_refined.with_columns([
+        pl.col("created_date").cast(pl.Datetime(time_unit="ms")),
+        pl.col("closed_date").cast(pl.Datetime(time_unit="ms")),
+        pl.col("resolution_updated_date").cast(pl.Datetime(time_unit="ms"))
+    ])
+
     df_refined = df_refined.with_columns([
         pl.col("borough").str.to_uppercase(),
         pl.col("city").str.to_uppercase(),
@@ -110,6 +117,14 @@ def transform():
     df_refined = df_refined.unique(
         subset=["request_id"],
         keep="first"
+    )
+
+    df_refined = df_refined.with_columns(
+    pl.col("police_precinct").str.replace("Precinct ", "").cast(pl.Int64, strict=False).alias("police_precinct")
+    )
+
+    df_refined = df_refined.with_columns(
+    pl.col("council_district").cast(pl.Int64, strict=False).alias("council_district")
     )
 
     df_refined.sink_parquet(
