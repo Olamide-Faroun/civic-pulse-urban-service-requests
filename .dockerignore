@@ -6,3 +6,10 @@ logs/
 .venv
 airflow.db
 airflow.cfg
+credentials.sh
+.terraform
+.hcl
+credentials.txt
+*.tfstate
+*.backup
+*.tfvars

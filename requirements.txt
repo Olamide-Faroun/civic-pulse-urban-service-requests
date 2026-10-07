@@ -1,1 +1,8 @@
 # Astro Runtime includes the following pre-installed providers packages: https://www.astronomer.io/docs/astro/runtime-image-architecture#provider-packages
+polars==1.44.2
+azure-storage-blob==12.30.3
+python-dotenv==1.2.3
+
+apache-airflow-providers-postgres==7.0.2
+apache-airflow-providers-microsoft-azure==15.1.0
+apache-airflow-providers-common-sql==2.1.1

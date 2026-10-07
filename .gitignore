@@ -6,3 +6,12 @@ __pycache__/
 .DS_Store
 .astro
 airflow_settings.yaml
+credentials.sh
+.terraform
+.hcl
+credentials.txt
+*.tfstate
+*.backup
+*.tfvars
+.*.drawio.bkp
+.*.drawio.dtmp
